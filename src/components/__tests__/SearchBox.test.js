@@ -1,7 +1,7 @@
 import React from 'react';
 import { mount } from 'enzyme';
 import SearchBox from 'components/SearchBox/SearchBox';
-import Button from '../UI/Button/Button';
+import Button from '../Button/Button';
 
 let wrapped;
 

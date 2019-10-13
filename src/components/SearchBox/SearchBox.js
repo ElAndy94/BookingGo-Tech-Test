@@ -1,16 +1,16 @@
 import React, { useRef, useState, useEffect } from 'react';
 
 import './SearchBox.scss';
-import Button from '../UI/Button/Button';
-import GetPlaceColor from '../GetPlaceInfo/GetPlaceColor';
-import GetPlaceType from '../GetPlaceInfo/GetPlaceType';
+import Button from '../Button/Button';
+import getPlaceColor from '../../utils/GetPlaceColor';
+import getPlaceType from '../../utils/GetPlaceType';
 import DataService from '../../services/DataService';
 
 const SearchBox = () => {
   const inputEl = useRef();
   let [results, setResults] = useState([]);
   let [showLocations, setShowLocations] = useState(false);
-  let [locationsListComponent, setLocationsListComponent] = useState();
+  let [locations, setLocations] = useState();
 
   useEffect(() => {
     resetSearchbar();
@@ -18,39 +18,35 @@ const SearchBox = () => {
 
   const resetSearchbar = () => {
     setShowLocations(false);
-    setLocationsListComponent('');
+    setLocations('');
   };
 
-  const handleChange = () => {
-    if (inputEl.current.value.length < 2) {
+  const handleChange = event => {
+    if (event.currentTarget.value.length < 2) {
       setShowLocations(false);
-      setLocationsListComponent('');
+      setLocations('');
       return;
     }
 
     DataService.getData(inputEl.current.value).then(res => {
       setShowLocations(true);
       setResults(res.data.results.docs);
-      console.log(res.data.results.docs);
     });
 
     if (results.length && showLocations) {
-      setLocationsListComponent(
+      setLocations(
         <div id='search_box_results_container'>
           <ul className='pickup_location_results'>
             {results.map(value => {
-              const placeName =
-                value.name + ' ' + (value.iata ? '(' + value.iata + ')' : '');
+              const placeName = `${value.name} ${
+                value.iata ? `(${value.iata})` : ''
+              }`;
 
-              // value.city === 'undefined' && '';
-              // value.region === 'undefined' && '';
-
-              let placeLocation =
+              const placeLocation =
                 (value.city ? value.city : value.region) + ', ' + value.country;
-
-              // placeLocation
-              //   .replace('undefined', '')
-              //   .replace('undefined,', '');
+              //   const placeLocation = (value.city
+              //     ? value.city
+              //     : value.region)`, ${value.country}`;
 
               if (value.name === 'No results found') {
                 return (
@@ -67,10 +63,10 @@ const SearchBox = () => {
                   <div className='results_bookingId_container'>
                     <div
                       style={{
-                        backgroundColor: GetPlaceColor(value.placeType)
+                        backgroundColor: getPlaceColor(value.placeType)
                       }}
                     >
-                      {GetPlaceType(value.placeType)}
+                      {getPlaceType(value.placeType)}
                     </div>
                   </div>
                   <div className='results_location_container'>
@@ -88,7 +84,7 @@ const SearchBox = () => {
 
   const blurResults = () => {
     setShowLocations(false);
-    setLocationsListComponent('');
+    setLocations('');
   };
 
   return (
@@ -106,16 +102,12 @@ const SearchBox = () => {
             placeholder='city, airport, station, region, district…'
             aria-label='city, airport, station, region and district...'
             ref={inputEl}
-            onChange={() => {
-              handleChange();
-            }}
-            onBlur={() => {
-              blurResults();
-            }}
+            onChange={handleChange}
+            onBlur={blurResults}
           />
         </div>
 
-        {locationsListComponent}
+        {locations}
 
         <Button
           className='search_box_button'
