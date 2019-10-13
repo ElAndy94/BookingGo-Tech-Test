@@ -1,0 +1,103 @@
+.search_box {
+  width: 480px;
+  background-color: #f3ce56;
+  padding: 24px;
+
+  .search_box_title {
+    color: #333;
+    font-size: 24px;
+    font-weight: 500;
+    line-height: 2rem;
+    margin-bottom: 1rem;
+  }
+
+  .search_box_label {
+    display: block;
+    padding: 0 0 4px;
+    color: #444;
+    font-size: 14px;
+    line-height: 1.25rem;
+    color: #444;
+  }
+
+  form {
+    .search_box_input {
+      -webkit-appearance: none;
+      height: 40px;
+      width: 93%;
+      font-size: 1rem;
+      border: 1px solid #a4a4a4;
+      border-radius: 4px;
+      padding: 8px 16px;
+      overflow: visible;
+
+      &:focus {
+        border-color: #0f6193;
+        outline: 0;
+      }
+    }
+
+    .search_box_button {
+      font-size: 24px;
+      font-weight: 500;
+      line-height: 1em;
+    }
+  }
+}
+
+#search_box_results_container {
+  position: relative;
+  z-index: 10;
+  width: 100%;
+  overflow: hidden;
+  background: #fff;
+  border-radius: 4px;
+  -webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+.pickup_location_results {
+  display: table;
+  cursor: pointer;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+}
+
+.list_item {
+  padding: 8px 16px;
+  cursor: pointer;
+  border-bottom: 1px #a4a4a4 solid;
+}
+
+.list_item:hover {
+  background-color: #e7f4fe;
+}
+
+.results_bookingId_container {
+  display: table-cell;
+  width: 1px;
+  padding: 8px 16px;
+
+  div {
+    min-width: 60px;
+    padding: 1px 4px;
+    color: #fff;
+    text-align: center;
+    background-color: #0f6193;
+    border-radius: 4px;
+    font-family: Open Sans, Segoe UI, Tahoma, sans-serif;
+    font-size: 12px;
+    line-height: 1.25rem;
+    font-weight: 600;
+  }
+}
+
+.results_location_container {
+  display: table-cell;
+  padding: 8px 16px 8px 0;
+}
+
+.results_support_text {
+  color: #a4a4a4;
+}
