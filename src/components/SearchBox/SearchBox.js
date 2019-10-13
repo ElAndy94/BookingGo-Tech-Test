@@ -2,6 +2,8 @@ import React, { useRef, useState, useEffect } from 'react';
 
 import './SearchBox.scss';
 import Button from '../UI/Button/Button';
+import GetPlaceColor from '../GetPlaceInfo/GetPlaceColor';
+import GetPlaceType from '../GetPlaceInfo/GetPlaceType';
 import DataService from '../../services/DataService';
 
 const SearchBox = () => {
@@ -62,6 +64,15 @@ const SearchBox = () => {
 
               return (
                 <li className='list_item' key={value.bookingId}>
+                  <div className='results_bookingId_container'>
+                    <div
+                      style={{
+                        backgroundColor: GetPlaceColor(value.placeType)
+                      }}
+                    >
+                      {GetPlaceType(value.placeType)}
+                    </div>
+                  </div>
                   <div className='results_location_container'>
                     <div className='results_location_name'>{placeName}</div>
                     <div className='results_support_text'>{placeLocation}</div>
