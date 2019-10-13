@@ -2,6 +2,7 @@ import React, { useRef, useState, useEffect } from 'react';
 
 import './SearchBox.scss';
 import Button from '../UI/Button/Button';
+import DataService from '../../services/DataService';
 
 const SearchBox = () => {
   const inputEl = useRef();
@@ -25,20 +26,11 @@ const SearchBox = () => {
       return;
     }
 
-    fetch(
-      `https://www.rentalcars.com/FTSAutocomplete.do?solrIndex=fts_en&solrRows=6&solrTerm=${inputEl.current.value}`
-    )
-      .then(res => res.json())
-      .then(
-        data => {
-          setResults(data.results.docs);
-          setShowLocations(true);
-          console.log(data.results.docs);
-        },
-        error => {
-          return error;
-        }
-      );
+    DataService.getData(inputEl.current.value).then(res => {
+      setShowLocations(true);
+      setResults(res.data.results.docs);
+      console.log(res.data.results.docs);
+    });
 
     if (results.length && showLocations) {
       setLocationsListComponent(
@@ -118,7 +110,7 @@ const SearchBox = () => {
           clicked={() => {
             handleChange();
           }}
-          //   disabled={true}
+          //disabled={true}
         >
           Search
         </Button>
