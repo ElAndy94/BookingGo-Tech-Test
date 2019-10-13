@@ -99,10 +99,12 @@ const SearchBox = () => {
           <label className='search_box_label'>Pick-up Location</label>
           <input
             className='search_box_input'
+            id='search_box_input'
             name='pickupLocation'
             type='text'
             autoComplete='off'
             placeholder='city, airport, station, region, district…'
+            aria-label='city, airport, station, region and district...'
             ref={inputEl}
             onChange={() => {
               handleChange();
