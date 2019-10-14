@@ -1,0 +1,21 @@
+{
+  "files": {
+    "main.css": "/BookingGo-Tech-Test/static/css/main.1b080101.chunk.css",
+    "main.js": "/BookingGo-Tech-Test/static/js/main.c44f2675.chunk.js",
+    "main.js.map": "/BookingGo-Tech-Test/static/js/main.c44f2675.chunk.js.map",
+    "runtime-main.js": "/BookingGo-Tech-Test/static/js/runtime-main.3353d468.js",
+    "runtime-main.js.map": "/BookingGo-Tech-Test/static/js/runtime-main.3353d468.js.map",
+    "static/js/2.f3aa29c3.chunk.js": "/BookingGo-Tech-Test/static/js/2.f3aa29c3.chunk.js",
+    "static/js/2.f3aa29c3.chunk.js.map": "/BookingGo-Tech-Test/static/js/2.f3aa29c3.chunk.js.map",
+    "index.html": "/BookingGo-Tech-Test/index.html",
+    "precache-manifest.bcc5587b3450c7ffcd33c2cfb5a6decc.js": "/BookingGo-Tech-Test/precache-manifest.bcc5587b3450c7ffcd33c2cfb5a6decc.js",
+    "service-worker.js": "/BookingGo-Tech-Test/service-worker.js",
+    "static/css/main.1b080101.chunk.css.map": "/BookingGo-Tech-Test/static/css/main.1b080101.chunk.css.map"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.3353d468.js",
+    "static/js/2.f3aa29c3.chunk.js",
+    "static/css/main.1b080101.chunk.css",
+    "static/js/main.c44f2675.chunk.js"
+  ]
+}
