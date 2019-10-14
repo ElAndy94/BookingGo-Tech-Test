@@ -6,5 +6,5 @@ import SearchBox from 'components/SearchBox/SearchBox';
 it('shows the SearchBox Component', () => {
   const wrapped = shallow(<App />);
 
-  expect(wrapped.find(SearchBox).length).toEqual(1);
+  expect(wrapped.find(SearchBox).exists()).toEqual(true);
 });

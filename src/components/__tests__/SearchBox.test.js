@@ -9,17 +9,21 @@ beforeEach(() => {
   wrapped = mount(<SearchBox />);
 });
 
-it('has a Label showing, also another to check if its containing the right text', () => {
-  expect(wrapped.find('label').length).toEqual(1);
+describe('Label', () => {
+  it('has a Label showing, also another to check if its containing the right text', () => {
+    expect(wrapped.find('.search_box_label').length).toEqual(1);
 
-  expect(wrapped.find('label').props().children).toEqual('Pick-up Location');
-
-  expect(wrapped.find(Button).length).toEqual(1);
+    expect(wrapped.find('.search_box_label').text()).toEqual(
+      'Pick-up Location'
+    );
+  });
 });
 
-it('has a button component loaded', () => {
-  expect(wrapped.find(Button).length).toEqual(1);
-  expect(wrapped.find(Button).props().children).toEqual('Search');
+describe('Button Component', () => {
+  it('has a button component loaded', () => {
+    expect(wrapped.find(Button).length).toEqual(1);
+    expect(wrapped.find(Button).props().children).toEqual('Search');
+  });
 });
 
 afterEach(() => {

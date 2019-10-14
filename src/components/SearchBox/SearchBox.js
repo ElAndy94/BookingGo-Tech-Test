@@ -1,4 +1,5 @@
 import React, { useRef, useState, useEffect } from 'react';
+import _ from 'lodash';
 
 import './SearchBox.scss';
 import Button from '../Button/Button';
@@ -21,8 +22,8 @@ const SearchBox = () => {
     setLocations('');
   };
 
-  const handleChange = event => {
-    if (event.currentTarget.value.length < 2) {
+  const handleChange = () => {
+    if (inputEl.current.value.length <= 1) {
       setShowLocations(false);
       setLocations('');
       return;
@@ -37,16 +38,14 @@ const SearchBox = () => {
       setLocations(
         <div id='search_box_results_container'>
           <ul className='pickup_location_results'>
-            {results.map(value => {
+            {results.slice(0, 6).map(value => {
               const placeName = `${value.name} ${
                 value.iata ? `(${value.iata})` : ''
               }`;
 
-              const placeLocation =
-                (value.city ? value.city : value.region) + ', ' + value.country;
-              //   const placeLocation = (value.city
-              //     ? value.city
-              //     : value.region)`, ${value.country}`;
+              const placeLocation = `${
+                value.city ? value.city : value.region
+              }, ${value.country}`;
 
               if (value.name === 'No results found') {
                 return (
@@ -100,9 +99,9 @@ const SearchBox = () => {
             type='text'
             autoComplete='off'
             placeholder='city, airport, station, region, district…'
-            aria-label='city, airport, station, region and district...'
+            aria-label='city, airport, station, region, district…'
             ref={inputEl}
-            onChange={handleChange}
+            onChange={_.debounce(handleChange, 500)}
             onBlur={blurResults}
           />
         </div>
